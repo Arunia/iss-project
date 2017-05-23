@@ -1,0 +1,20 @@
+{% extends 'IssConferenceBundle::layout.html.twig' %}
+{% block content %}
+    <div class="well">
+        {% if conference.owner.id == app.user.id %}
+            <a href="{{ path('conference_edit', { 'id': conference.id }) }}">
+                <button class="btn" href="{{ path('conference_new') }}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Editeaza
+                </button>
+            </a>
+        {% endif %}
+        <a href="{{ path('conference_new') }}">
+            <button class="btn" href="{{ path('conference_new') }}">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                Creaza o noua conferinta
+            </button>
+        </a>
+    </div>
+    {% include 'IssConferenceBundle:Conference:single_conference.html.twig' with {'entity': conference, 'showEdit': false} %}
+{% endblock %}

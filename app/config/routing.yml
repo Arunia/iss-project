@@ -1,0 +1,7 @@
+iss_conference:
+    resource: "@IssConferenceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

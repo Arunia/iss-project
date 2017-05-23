@@ -1,0 +1,34 @@
+{% extends 'IssConferenceBundle::layout.html.twig' %}
+{% form_theme edit_form _self %}
+{% block form_row %}
+    <div class="form-group">
+        {{- form_label(form, null, {label_attr: {class: 'control-label col-sm-2'}}) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+    </div>
+{% endblock form_row %}
+{% block form_widget_simple %}
+    {%- set type = type|default('text') -%}
+    {% set attrclass = attr.class is defined ? attr.class ~ ' form-control' : 'form-control' %}
+    {% set attr = attr|merge({'class': attrclass}) %}
+    <div class="col-sm-10">
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock form_widget_simple -%}
+{% block content %}
+    {{ form_start(edit_form, {attr: {class: 'form-horizontal well'}}) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit"/>
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('conference_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

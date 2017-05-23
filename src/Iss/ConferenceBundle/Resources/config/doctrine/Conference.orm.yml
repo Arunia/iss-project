@@ -1,0 +1,31 @@
+Iss\ConferenceBundle\Entity\Conference:
+  type: entity
+  repositoryClass: Iss\ConferenceBundle\Repository\ConferenceRepository
+  table: conference
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255
+      nullable: false
+    start_date:
+      type: datetime
+      nullable: false
+    end_date:
+      type: datetime
+      nullable: false
+    domeniu:
+      type: string
+      length: 255
+    descriere:
+      type: text
+
+  manyToOne:
+    owner:
+      targetEntity: User
+      joinColumn:
+        name: owner_user_id
+        referencedColumnName: id

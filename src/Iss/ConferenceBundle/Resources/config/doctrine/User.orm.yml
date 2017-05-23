@@ -1,0 +1,23 @@
+Iss\ConferenceBundle\Entity\User:
+  type: entity
+  table: user
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255
+    password:
+      type: string
+      length: 255
+    email:
+      type: string
+      length: 255
+    afiliere:
+      type: string
+      length: 255
+    role:
+      type: string
+      length: 100

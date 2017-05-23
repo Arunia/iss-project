@@ -1,0 +1,14 @@
+iss_conference_conference:
+    resource: "@IssConferenceBundle/Resources/config/routing/conference.yml"
+    prefix:   /conference
+
+iss_conference_homepage:
+    path:     /
+    defaults: { _controller: IssConferenceBundle:Default:index }
+
+login:
+  path: /login
+  defaults: { _controller: IssConferenceBundle:Security:login}
+
+logout:
+    path:   /logout

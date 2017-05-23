@@ -1,0 +1,15 @@
+<div class="well">
+    <h1>
+        <a href="{{ path('conference_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
+    </h1>
+    {% if (app.user and entity.owner.id == app.user.id and showEdit is defined and showEdit) %}
+        <div class="alert-info">
+            <a href="{{ path('conference_edit', { 'id': entity.id }) }}"><i>Apasa aici pentru a edita conferinta</i></a>
+        </div>
+    {% endif %}
+    <h4>{{ entity.startDate|date('Y-m-d H:m') }} - {{ entity.endDate|date('Y-m-d') }}</h4>
+    <i>Domeniu: {{ entity.domeniu }}</i>
+    <div>
+        {{ entity.descriere }}
+    </div>
+</div>

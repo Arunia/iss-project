@@ -1,0 +1,29 @@
+conference_index:
+    path:     /
+    defaults: { _controller: "IssConferenceBundle:Conference:index" }
+    methods:  GET
+
+conference_show:
+    path:     /{id}/show
+    defaults: { _controller: "IssConferenceBundle:Conference:show" }
+    methods:  GET
+
+conference_new:
+    path:     /new
+    defaults: { _controller: "IssConferenceBundle:Conference:new" }
+    methods:  [GET, POST]
+
+conference_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "IssConferenceBundle:Conference:edit" }
+    methods:  [GET, POST]
+
+conference_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "IssConferenceBundle:Conference:delete" }
+    methods:  DELETE
+
+conference_list_my_conferences:
+    path: /my
+    defaults: { _controller: "IssConferenceBundle:Conference:listMyConferences" }
+    methods: GET

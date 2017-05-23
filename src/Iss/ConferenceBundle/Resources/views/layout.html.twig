@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+            Iss - Conference Management
+        {% endblock %}
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {% block javascripts %}
+    {% endblock %}
+    {#<link rel="shortcut icon" href="{{ asset('bundles/ensjobeet/images/favicon.ico') }}" />#}
+    {% stylesheets '@bootstrap_css' '@datepicker_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/issconference/css/main.css') }}" type="text/css" media="all"/>
+    {% endblock %}
+</head>
+<body>
+<div id="container" class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('iss_conference_homepage') }}">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">About</a></li>
+                </ul>
+
+                {% if app.user %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        </li>
+                    </ul>
+                {% endif %}
+                {% if is_granted('ROLE_DIRECTOR') %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('conference_list_my_conferences') }}"><span
+                                        class="glyphicon glyphicon-copyright-mark"></span> Management Conferinte</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div id="content">
+        {% if app.session.flashbag.has('notice') %}
+            <div class="flash_notice">
+                {{ app.session.flashbag.get('notice') }}
+            </div>
+        {% endif %}
+
+        {% if app.session.flashbag.has('error') %}
+            <div class="flash_error">
+                {{ app.session.flashbag.get('error') }}
+            </div>
+        {% endif %}
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="content text-center">
+          <span class="iss">
+            powered by <a href="#"> Grupa 332</a>
+          </span>
+        </div>
+    </div>
+</div>
+{% javascripts '@jquery' '@bootstrap_js' '@datepicker_js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>
