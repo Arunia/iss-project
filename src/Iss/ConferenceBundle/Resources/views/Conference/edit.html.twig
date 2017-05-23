@@ -15,20 +15,14 @@
         <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
     </div>
 {% endblock form_widget_simple -%}
+{% block textarea_widget %}
+    <div class="col-sm-10">
+        <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </div>
+{% endblock textarea_widget %}
 {% block content %}
     {{ form_start(edit_form, {attr: {class: 'form-horizontal well'}}) }}
     {{ form_widget(edit_form) }}
-    <input type="submit" value="Edit"/>
+    <input type="submit" value="Salveaza"/>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('conference_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

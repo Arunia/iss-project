@@ -33,7 +33,9 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
         $conferinta2->setName('Conferinta 2');
         $conferinta2->setStartDate(new \DateTime('23.05.2017 8:00:00'));
         $conferinta2->setEndDate(new \DateTime('23.05.2017 12:00:00'));
-        $conferinta2->setDescriere('bla bla 2');
+        $conferinta2->setDescriere('<h1 style="text-align: center;"><strong>Conferinta 2</strong></h1>
+<p><strong>detalii</strong></p>
+<p><em><strong>etc</strong></em></p>');
         $conferinta2->setDomeniu('droguri');
         $conferinta2->setOwner($this->getReference('user-director'));
 

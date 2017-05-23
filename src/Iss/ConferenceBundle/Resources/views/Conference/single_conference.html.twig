@@ -8,8 +8,10 @@
         </div>
     {% endif %}
     <h4>{{ entity.startDate|date('Y-m-d H:m') }} - {{ entity.endDate|date('Y-m-d') }}</h4>
-    <i>Domeniu: {{ entity.domeniu }}</i>
+    <i>
+        Domeniu: {{ entity.domeniu }}
+    </i>
     <div>
-        {{ entity.descriere }}
+        {{ entity.descriere|raw }}
     </div>
 </div>

@@ -43,7 +43,8 @@
                 {% if is_granted('ROLE_DIRECTOR') %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ path('conference_list_my_conferences') }}"><span
-                                        class="glyphicon glyphicon-copyright-mark"></span> Management Conferinte</a></li>
+                                        class="glyphicon glyphicon-copyright-mark"></span> Management Conferinte</a>
+                        </li>
                     </ul>
                 {% endif %}
             </div>
@@ -79,5 +80,6 @@
 {% javascripts '@jquery' '@bootstrap_js' '@datepicker_js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+{{ tinymce_init() }}
 </body>
 </html>
