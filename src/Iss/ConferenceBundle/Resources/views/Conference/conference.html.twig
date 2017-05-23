@@ -1,7 +1,7 @@
 {% extends 'IssConferenceBundle::layout.html.twig' %}
 {% block content %}
     <div class="well">
-        {% if conference.owner.id == app.user.id %}
+        {% if app.user and conference.owner.id == app.user.id %}
             <a href="{{ path('conference_edit', { 'id': conference.id }) }}">
                 <button class="btn" href="{{ path('conference_new') }}">
                     <span class="glyphicon glyphicon-edit"></span>
