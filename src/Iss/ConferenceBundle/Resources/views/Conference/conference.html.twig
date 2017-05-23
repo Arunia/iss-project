@@ -9,12 +9,14 @@
                 </button>
             </a>
         {% endif %}
-        <a href="{{ path('conference_new') }}">
-            <button class="btn" href="{{ path('conference_new') }}">
-                <span class="glyphicon glyphicon-plus-sign"></span>
-                Creaza o noua conferinta
-            </button>
-        </a>
+        {% if is_granted('ROLE_DIRECTOR') %}
+            <a href="{{ path('conference_new') }}">
+                <button class="btn" href="{{ path('conference_new') }}">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    Creaza o noua conferinta
+                </button>
+            </a>
+        {% endif %}
     </div>
     {% include 'IssConferenceBundle:Conference:single_conference.html.twig' with {'entity': conference, 'showEdit': false} %}
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'IssConferenceBundle::layout.html.twig' %}
+{% block content %}
+    <div class="well">
+        {% if app.user and presentation.owner.id == app.user.id %}
+            <a href="{{ path('presentation_edit', { 'id': presentation.id }) }}">
+                <button class="btn" href="{{ path('presentation_new') }}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Editeaza
+                </button>
+            </a>
+        {% endif %}
+        {% if is_granted('ROLE_SPEAKER') %}
+            <a href="{{ path('presentation_new') }}">
+                <button class="btn" href="{{ path('presentation_new') }}">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    Creaza o noua prezentare
+                </button>
+            </a>
+        {% endif %}
+    </div>
+    {% include 'IssConferenceBundle:Presentation:single_presentation.html.twig' with {'entity': presentation, 'showEdit': false} %}
+{% endblock %}

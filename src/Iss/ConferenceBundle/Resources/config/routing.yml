@@ -2,6 +2,10 @@ iss_conference_conference:
     resource: "@IssConferenceBundle/Resources/config/routing/conference.yml"
     prefix:   /conference
 
+iss_conference_presentation:
+    resource: "@IssConferenceBundle/Resources/config/routing/presentation.yml"
+    prefix:   /presentation
+
 iss_conference_homepage:
     path:     /
     defaults: { _controller: IssConferenceBundle:Default:index }

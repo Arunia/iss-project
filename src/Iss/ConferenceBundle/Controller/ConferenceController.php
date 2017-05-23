@@ -71,11 +71,8 @@ class ConferenceController extends Controller
      */
     public function showAction(Conference $conference)
     {
-//        $deleteForm = $this->createDeleteForm($conference);
-
         return $this->render('IssConferenceBundle:Conference:conference.html.twig', array(
             'conference' => $conference,
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 

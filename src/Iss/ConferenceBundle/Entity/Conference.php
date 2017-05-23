@@ -9,6 +9,11 @@ use Symfony\Component\Security\Acl\Model\DomainObjectInterface;
  */
 class Conference implements DomainObjectInterface
 {
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     /**
      * @var integer
      */

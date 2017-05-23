@@ -1,0 +1,14 @@
+{% extends 'IssConferenceBundle::layout.html.twig' %}
+{% block content %}
+    <div class="well">
+        <a href="{{ path('presentation_new') }}">
+            <button class="btn" href="{{ path('presentation_new') }}">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                Creaza o noua prezentare
+            </button>
+        </a>
+    </div>
+    {% for entity in entities %}
+        {% include 'IssConferenceBundle:Presentation:simple_single_presentation.html.twig' with {'entity': entity, showEdit: true} %}
+    {% endfor %}
+{% endblock %}

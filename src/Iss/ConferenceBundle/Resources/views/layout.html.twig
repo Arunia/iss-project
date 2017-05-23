@@ -47,6 +47,13 @@
                         </li>
                     </ul>
                 {% endif %}
+                {% if is_granted('ROLE_SPEAKER') %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('presentation_index') }}"><span
+                                        class="glyphicon glyphicon-copyright-mark"></span> Management Prezentari</a>
+                        </li>
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </nav>

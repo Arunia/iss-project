@@ -38,6 +38,15 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($director);
         $this->addReference('user-director', $director);
 
+        $speaker = new User();
+        $speaker->setName('Paul Vertic');
+        $speaker->setAfiliere('Grupa 332');
+        $speaker->setEmail('paul.vertic@gmail.com');
+        $speaker->setRole('ROLE_SPEAKER');
+        $this->setPassword($speaker);
+        $manager->persist($speaker);
+        $this->addReference('user-speaker', $speaker);
+
         $manager->flush();
     }
 
