@@ -6,14 +6,8 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Iss\ConferenceBundle\Entity\Conference;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
-use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
-use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
-class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterface
 {
     protected $container;
 
@@ -41,25 +35,10 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
 
         $manager->persist($conferinta2);
         $manager->flush();
-
-        // creating the ACL
-        $aclProvider = $this->container->get('security.acl.provider');
-        $objectIdentity = ObjectIdentity::fromDomainObject($conferinta);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        // retrieving the security identity of the currently logged-in user
-        $securityIdentity = UserSecurityIdentity::fromAccount($this->getReference('user-director'));
-        // grant owner access
-        $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
-        $aclProvider->updateAcl($acl);
     }
 
     public function getOrder()
     {
         return 2; // the order in which fixtures will be loaded
-    }
-
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
     }
 }
