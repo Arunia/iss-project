@@ -17,9 +17,13 @@ class ConferenceType extends AbstractType
         $builder->add('name')->add('start_date')
             ->add('start_date', DateType::class, array(
                 'widget' => 'single_text',
-                'attr' => array('class'=>'datepicker', 'data-format' => 'yyyy-MM-dd HH:mm'),
-                'format' => 'yyyy-MM-dd HH:mm',
-            ))->add('end_date')->add('domeniu')->add('descriere')->add('owner');
+                'attr' => array('class'=>'datepicker', 'data-format' => 'yyyy-mm-dd'),
+                'format' => 'yyyy-MM-dd',
+            ))->add('end_date', DateType::class, array(
+                'widget' => 'single_text',
+                'attr' => array('class'=>'datepicker', 'data-format' => 'yyyy-mm-dd'),
+                'format' => 'yyyy-MM-dd',
+            ))->add('domeniu')->add('descriere')->add('owner');
     }
     
     /**
