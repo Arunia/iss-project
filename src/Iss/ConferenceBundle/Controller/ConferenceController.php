@@ -52,13 +52,14 @@ class ConferenceController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $conference->setOwner($this->get('security.token_storage')->getToken()->getUser());
             $em->persist($conference);
             $em->flush();
 
             return $this->redirectToRoute('conference_show', array('id' => $conference->getId()));
         }
 
-        return $this->render('conference/new.html.twig', array(
+        return $this->render('IssConferenceBundle:Conference:new.html.twig', array(
             'conference' => $conference,
             'form' => $form->createView(),
         ));

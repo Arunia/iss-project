@@ -24,7 +24,7 @@ class ConferenceType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => array('class' => 'datepicker', 'data-format' => 'yyyy-mm-dd'),
                 'format' => 'yyyy-MM-dd',
-            ))->add('descriere', TextareaType::class, array(
+            ))->add('domeniu')->add('descriere', TextareaType::class, array(
                 'attr' => array('class' => 'tinymce')
             ));
     }
